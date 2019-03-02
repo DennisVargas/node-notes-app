@@ -22,14 +22,26 @@ yargs.command({
         }
     },
     handler: (argv) => {
+        notes.addNote(argv.title, argv.body);
     }
 });
 
 yargs.command({
     command: 'remove',
     describe: 'Remove a note',
-    handler: () => {
-        console.log('Removing the note.');
+    builder:{
+        title:{
+            describe: 'Title of note to be deleted.',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: (argv) => {
+        console.log(`Removing note with title, ${argv.title}`);
+        if(notes.deleteNote(argv.title))
+            console.log(chalk.green.bold('Success! Note Removed.'));
+        else
+            console.log(chalk.red.bold(`Error! Nothing Removed.`));
     }
 });
 
