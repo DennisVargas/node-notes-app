@@ -21,11 +21,7 @@ yargs.command({
             type: 'string'
         }
     },
-    handler: () => {
-        console.log(`Adding note`);
-        console.log("--");
-        console.log(`title: ${yargs.argv.title}`);
-        console.log(`body: ${yargs.argv.body}`);
+    handler: (argv) => {
     }
 });
 
@@ -52,6 +48,7 @@ yargs.command({
         console.log('Reading note.');
     }
 });
+
 yargs.parse();
 
 // console.log(yargs.argv);
