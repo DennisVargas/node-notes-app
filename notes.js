@@ -41,15 +41,16 @@ const addNote = (title, body) => {
     var notes = loadNotes();
     var dupTitleNotes = notes.filter((note)=>note.title === title);
     if (dupTitleNotes.length > 0){
-        console.log("Error! Note Title Exists. Nothing Altered.");
-        return;
+        
+        return -1;
     }
     notes.push(note);
     if (saveNotes(notes)){
-        console.log('SUCCESS! Note Added.');
         printNote(note);
+        return 0;
     }else{
-        console.log('ERROR! Write Error! Nothing Altered.');
+        
+        return -2;
     }
 };
 
