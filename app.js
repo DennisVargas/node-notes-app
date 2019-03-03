@@ -39,9 +39,9 @@ yargs.command({
     handler: (argv) => {
         console.log(`Removing note with title, ${argv.title}`);
         if(notes.deleteNote(argv.title))
-            console.log(chalk.green.bold('Success! Note Removed.'));
+            console.log(chalk.green.inverse('Success! Note Removed.'));
         else
-            console.log(chalk.red.bold(`Error! Nothing Removed.`));
+            console.log(chalk.red.inverse(`Error! Nothing Removed.`));
     }
 });
 
