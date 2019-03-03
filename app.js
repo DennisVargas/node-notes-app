@@ -22,7 +22,17 @@ yargs.command({
         }
     },
     handler: (argv) => {
-        notes.addNote(argv.title, argv.body);
+        switch(notes.addNote(argv.title, argv.body)){
+            case 0:
+                console.log(chalk.green.inverse('SUCCESS! Note Added.'));
+                break;
+            case -1:
+                console.log(chalk.red.inverse("ERROR! Note Title Exists. Nothing Altered."));
+                break;
+            case -2:
+                console.log(chalk.red.inverse('ERROR! Write Error! Nothing Altered.'));
+                break;
+        }
     }
 });
 
@@ -39,9 +49,9 @@ yargs.command({
     handler: (argv) => {
         console.log(`Removing note with title, ${argv.title}`);
         if(notes.deleteNote(argv.title))
-            console.log(chalk.green.bold('Success! Note Removed.'));
+            console.log(chalk.green.inverse('Success! Note Removed.'));
         else
-            console.log(chalk.red.bold(`Error! Nothing Removed.`));
+            console.log(chalk.red.inverse(`Error! Nothing Removed.`));
     }
 });
 
