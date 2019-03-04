@@ -66,8 +66,16 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe: 'read note',
-    handler: () => {
-        console.log('Reading note.');
+    builder:{
+        title: {
+            describe: 'Title of note to be read.',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: (argv) => {
+        if(notes.readNote(argv.title) === -1)
+            console.log(chalk.red.inverse(`ERROR! Note title, "${argv.title}", does not exist.`));
     }
 });
 
