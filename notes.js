@@ -44,11 +44,6 @@ const listNotes = () => {
     printNotes(notes);
 };
 
-const printNotes = (notes) => {
-    console.log("Printing notes.");
-    notes.forEach((note) => printNote(note));
-};
-
 const loadNotes = () => {
     try{
         var notesBuffer = fs.readFileSync('notes-data.json');
@@ -63,6 +58,21 @@ const printNote = (note) => {
     console.log("--");
     console.log(`title: ${note.title}`);
     console.log(`body: ${note.body}`);
+};
+
+const printNotes = (notes) => {
+    console.log("Printing notes.");
+    notes.forEach((note) => printNote(note));
+};
+
+const readNote = (title) => {
+    var notes = loadNotes();
+    var note = notes.find((note)=>title === note.title);
+    if(note){
+        printNote(note);
+        return 0;
+    }else
+        return -1;
 };
 
 const saveNotes = (notes) => {
@@ -80,5 +90,5 @@ module.exports = {
     deleteNote,
     getNotes,
     listNotes,
-    printNote
+    readNote
 };
