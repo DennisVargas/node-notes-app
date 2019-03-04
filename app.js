@@ -22,6 +22,7 @@ yargs.command({
         }
     },
     handler: (argv) => {
+        debugger;
         switch(notes.addNote(argv.title, argv.body)){
             case 0:
                 console.log(chalk.green.inverse('SUCCESS! Note Added.'));
@@ -59,15 +60,23 @@ yargs.command({
     command: 'list',
     describe: 'list notes',
     handler: () => {
-        console.log('Listing notes.');
+        notes.listNotes();
     }
 });
 
 yargs.command({
     command: 'read',
     describe: 'read note',
-    handler: () => {
-        console.log('Reading note.');
+    builder:{
+        title: {
+            describe: 'Title of note to be read.',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: (argv) => {
+        if(notes.readNote(argv.title) === -1)
+            console.log(chalk.red.inverse(`ERROR! Note title, "${argv.title}", does not exist.`));
     }
 });
 
