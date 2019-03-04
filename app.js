@@ -22,6 +22,7 @@ yargs.command({
         }
     },
     handler: (argv) => {
+        debugger;
         switch(notes.addNote(argv.title, argv.body)){
             case 0:
                 console.log(chalk.green.inverse('SUCCESS! Note Added.'));
