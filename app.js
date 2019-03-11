@@ -81,24 +81,3 @@ yargs.command({
 });
 
 yargs.parse();
-
-// console.log(yargs.argv);
-
-// challenge: add two new commmands
-// 1. setup ccommand to suupport "list"
-// 2. support read
-// 3. test work by running both
-
-// const msg = notes.getNotes();
-// console.log(msg);
-// const boldGreen = chalk.italic.yellow.bgBlack;
-// console.log( boldGreen("Success!"));
-
-// console.log(process.argv);
-// const validator = require('validator');
-// console.log(validator.isURL('https://mead.io'));
-// const returnedNotes = notes.getNotes();
-// console.log(returnedNotes);
-// const util = require('./utils.js');
-// const sum = util.add(4, -2);
-// console.log(sum);
